@@ -7,4 +7,12 @@ class Post < ActiveRecord::Base
   def posted_on
     created_at.strftime 'Posted on %B %d, %Y'
   end
+
+  def str_tags=(input_tags)
+    self.tags = input_tags.split(/\W+/).map { |tag| Tag.find_or_create_by(name: tag) }
+  end
+
+  def str_tags
+    tags.map(&:name).join(' ')
+  end
 end
