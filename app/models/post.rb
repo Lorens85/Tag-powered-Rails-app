@@ -9,7 +9,9 @@ class Post < ActiveRecord::Base
   end
 
   def str_tags=(input_tags)
-    self.tags = input_tags.split(/\W+/).map { |tag| Tag.find_or_create_by(name: tag) }
+    self.tags = input_tags.split(/\W+/).map do |tag|
+      Tag.find_or_create_by(name: tag.downcase)
+    end
   end
 
   def str_tags
