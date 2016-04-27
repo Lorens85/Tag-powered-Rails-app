@@ -49,3 +49,4 @@ end
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'simple_form'
+gem 'seed_dump'
